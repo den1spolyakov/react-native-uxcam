@@ -12,7 +12,7 @@
 @implementation RNUXCam
 
 // The React Native bridge needs to know our module
-RCT_EXPORT_MODULE()
+RCT_EXPORT_MODULE();
 
 RCT_EXPORT_METHOD(startWithKey:(NSString *)key) {
   [UXCam startWithKey:key];
