@@ -7,12 +7,24 @@
 //
 
 #import "RNUXCam.h"
-#import <UXCam/UXCam.h> 
+#import <UXCam/UXCam.h>
 
 @implementation RNUXCam
 
 // The React Native bridge needs to know our module
 RCT_EXPORT_MODULE()
+
+RCT_EXPORT_METHOD(startWithKey:(NSString *)key) {
+  [UXCam startWithKey:key];
+}
+
+RCT_EXPORT_METHOD(stopApplicationAndUploadData) {
+  [UXCam stopApplicationAndUploadData];
+}
+
+RCT_EXPORT_METHOD(restartSession) {
+  [UXCam restartSession];
+}
 
 RCT_EXPORT_METHOD(tagUsersName:(NSString*)userName:(RCTResponseSenderBlock)callback) {
   if (userName.length>0)
@@ -32,7 +44,7 @@ RCT_EXPORT_METHOD(tagScreenName:(NSString*)screenName:(RCTResponseSenderBlock)ca
   if (screenName.length>0)
   {
     [UXCam tagScreenName:screenName];
-    
+
     callback(@[[NSNumber numberWithBool:true]]);
   }
   else
